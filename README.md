@@ -45,5 +45,69 @@ Below is a snippet from the `valohai.yaml` showing how to set up a typical job:
     # See all parameters in ./valohai.yaml
 ```
 
+## Running on Valohai
+
+### Via Valohai App
+
+1. **Login to the [Valohai app](https://app.valohai.com)** and create a new project.
+2. **Configure the repository**:
+   - Go to your project's page.
+   - Navigate to the **Settings** tab.
+   - Under the **Repository** section, locate the **URL field**.
+   - Enter the URL of this repository.
+   - Click on the **Save** button to save the changes.
+3. **Running Executions**:
+   - Go to the **Executions** tab in your project.
+   - Create a new execution by selecting the step: `alphafold`.
+   - Customize the execution parameters if needed.
+   - Start the execution to run the selected step.
+
+### Via Terminal
+
+1. **Install Valohai** on your machine by running the following command:
+   ```bash
+   pip install valohai-cli valohai-utils
+    ```
+
+2. Log in to Valohai from the terminal using the command:
+   ``` bash
+    vh login
+    ```
+   
+3. Set up your project:
+
+Create a directory for your project:
+
+```bash
+  mkdir valohai-alphafold
+  cd valohai-alphafold
+  ```
+   
+Then, create the Valohai project:
+
+```bash
+  vh project create
+ ```
+
+4. Clone the repository to your local machine:
+
+```bash
+  git clone https://github.com/valohai/alphafold-example.git .
+  ```
+Congratulations! You have successfully cloned the repository, and you can now modify the code and run it using Valohai.
+
+### Running Executions from Terminal
+
+To run individual steps, execute the following command:
+```bash
+vh execution run <step-name> --adhoc
+```
+
+For example, to run the alphafold step, use the command:
+
+```bash
+vh execution run alphafold --adhoc
+```
+
 ## Why This Repository?
 This repository offers an integration of AlphaFold with Valohai's capabilities, specifically designed to handle large datasets efficiently through direct mounting. This approach is advantageous for intensive computational tasks requiring substantial data, thereby improving performance and reducing operational complexities.
