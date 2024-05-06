@@ -65,14 +65,14 @@ Below is a snippet from the `valohai.yaml` showing how to set up a typical job:
 ### Via Terminal
 
 1. **Install Valohai** on your machine by running the following command:
-   ```bash
-   pip install valohai-cli valohai-utils
-    ```
+```bash
+pip install valohai-cli valohai-utils
+```
 
 2. Log in to Valohai from the terminal using the command:
-   ``` bash
-    vh login
-    ```
+``` bash
+vh login
+```
    
 3. Set up your project:
 
