@@ -86,7 +86,7 @@ Create a directory for your project:
 Then, create the Valohai project:
 
 ```bash
-  vh project create
+  vh project create --name alphafold-example
  ```
 
 4. Clone the repository to your local machine:
