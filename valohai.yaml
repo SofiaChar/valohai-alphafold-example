@@ -1,0 +1,72 @@
+- step:
+    name: alphafold
+    environment: aws-us-east-1-network-mount-g5-24xlarge
+    image: valohai/alphafold:latest
+    command:
+    - nvidia-smi
+    - python run_alphafold.py {parameters}
+    mounts:
+      - destination: /data
+        readonly: yes
+        source: /s3/alphafold
+    inputs:
+    - name: fasta_paths
+      default: datum://018ebd3a-2381-a830-4fc3-a1702834c82d
+    parameters:
+    - name: fasta_paths
+      type: string
+      default: /valohai/inputs/fasta_paths/proteinA.fasta
+    - name: data_dir
+      type: string
+      default: /data
+    - name: num_multimer_predictions_per_model
+      type: integer
+      default: 5
+    - name: random_seed
+      type: integer
+      optional: true
+    - name: max_template_date
+      type: string
+      default: "2021-11-01"
+    - name: db_preset
+      type: string
+      default: "reduced_dbs"
+    - name: model_preset
+      type: string
+      default: "monomer_ptm"
+    - name: benchmark
+      type: flag
+      default: True
+      pass-true-as: --benchmark=True
+      pass-false-as: --benchmark=False
+    - name: use_precomputed_msas
+      type: flag
+      default: True
+      pass-true-as: --use_precomputed_msas=True
+      pass-false-as: --use_precomputed_msas=False
+    - name: use_gpu_relax
+      type: flag
+      default: False
+      pass-true-as: --use_gpu_relax=True
+      pass-false-as: --use_gpu_relax=False
+    - name: uniref90_database_path
+      type: string
+      default: /data/uniref90/uniref90.fasta
+    - name: mgnify_database_path
+      type: string
+      default: /data/mgnify/mgy_clusters_2018_12.fa
+    - name: output_dir
+      type: string
+      default: /valohai/outputs
+    - name: template_mmcif_dir
+      type: string
+      default: /data/pdb_mmcif/mmcif_files
+    - name: obsolete_pdbs_path
+      type: string
+      default: /data/pdb_mmcif/obsolete.dat
+    - name: small_bfd_database_path
+      type: string
+      default: /data/small_bfd/bfd-first_non_consensus_sequences.fasta
+    - name: pdb70_database_path
+      type: string
+      default: /data/pdb70/pdb70

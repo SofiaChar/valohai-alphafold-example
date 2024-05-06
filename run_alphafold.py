@@ -23,10 +23,8 @@ import shutil
 import sys
 import time
 from typing import Any, Dict, Union
+from pathlib import Path
 
-from absl import app
-from absl import flags
-from absl import logging
 from alphafold.common import confidence
 from alphafold.common import protein
 from alphafold.common import residue_constants
@@ -41,7 +39,11 @@ from alphafold.model import model
 from alphafold.relax import relax
 import jax.numpy as jnp
 import numpy as np
-
+import valohai
+import absl
+from absl import app
+from absl import flags
+from absl import logging
 # Internal import (7716).
 
 logging.set_verbosity(logging.INFO)
@@ -242,6 +244,7 @@ def predict_structure(
     model_type: str,
 ):
   """Predicts structure using AlphaFold for the given sequence."""
+  # fasta_path = Path('/valohai/inputs/fasta_paths')
   logging.info('Predicting %s', fasta_name)
   timings = {}
   output_dir = os.path.join(output_dir_base, fasta_name)

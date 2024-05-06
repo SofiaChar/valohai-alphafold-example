@@ -17,7 +17,7 @@
 import collections
 import functools
 import os
-from typing import Final, List, Mapping, Tuple
+from typing import List, Mapping, Tuple
 
 import numpy as np
 import tree
@@ -610,8 +610,8 @@ restype_1to3 = {
     'V': 'VAL',
 }
 
-PROTEIN_CHAIN: Final[str] = 'polypeptide(L)'
-POLYMER_CHAIN: Final[str] = 'polymer'
+PROTEIN_CHAIN= 'polypeptide(L)'
+POLYMER_CHAIN= 'polymer'
 
 
 def atom_id_to_type(atom_id: str) -> str:
