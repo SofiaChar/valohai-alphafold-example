@@ -44,6 +44,16 @@ Below is a snippet from the `valohai.yaml` showing how to set up a typical job:
         default: monomer
     # See all parameters in ./valohai.yaml
 ```
+### Data Mounting Explained
+In your `valohai.yaml` file, you can define mounts to attach external data sources directly to your execution environment. This is particularly useful for large datasets. Here's how you define a mount:
+
+**Source:** The source is the path to your dataset in an external storage like Amazon S3. You will get this path from your Valohai support.
+
+**Destination:** The destination is the directory path inside your job or container where the dataset will be mounted and accessible.
+#### Disadvantages of Mounting
+While direct mounting is efficient for handling large datasets, it does not leverage Valohai's versioning capabilities as effectively as using Valohai inputs. 
+
+**Data handled via mounts is not version-controlled by Valohai, which could affect reproducibility and tracking of data used across different executions.**
 
 ## Running on Valohai
 
